@@ -1,0 +1,140 @@
+<html translate="no" lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Faça seu cadastro - Gêmeos Brasil</title>
+    <meta name="description" content="">
+    <meta property="og:title" content="Faça seu cadastro - Gêmeos Brasil">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="">
+    <meta property="og:image:height" content="">
+    <link rel="shortcut icon" href="/js/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/js/favicon.png"> 
+    <link rel="icon" type="image/png" sizes="32x32" href="/js/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/js/favicon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="./index_files/style.css">
+    <script src="./index_files/jquery.min.js"></script>   
+    <script> var _base_url_ = '/index.html'; </script>
+</head>
+<body>
+    <div id="__next">
+        <header class="header-app-header">
+            <div class="header-app-header-container">
+                <div class="container container-600 font-mdd">
+                    <div style="text-align-last: justify; padding: 10 0 10 0;">
+                        <button type="button" aria-label="Menu" class="btn btn-link text-white font-lgg ps-0" data-bs-toggle="modal" data-bs-target="#mobileMenu" style="margin-top:5px">
+                            <i class="bi bi-filter-left"></i>
+                        </button>
+                        <a class="flex-grow-1 text-center" href="/index.html">
+                            <img src="./index_files/logo.png" class="header-app-brand">
+                        </a>
+                        <a class="btn btn-link text-white pe-0 text-right text-decoration-none" href="/suporte/index.html">
+                            <div class="suporte d-flex justify-content-end opacity-50"><i class="bi bi-chat-right-dots-fill"></i></div>
+                            <div class="suporte text-yellow font-xss">Suporte</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="black-bar fuse"></div>
+        <menu id="mobileMenu" class="modal fade modal-fluid" tabindex="-1" aria-labelledby="mobileMenuLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content bg-cor-primaria">
+                    <header class="app-header app-header-mobile--show">
+                        <div class="container container-600 h-100 d-flex align-items-center justify-content-between">
+                            <a href="/index.html">
+                                <img src="./index_files/logo.png" class="app-brand img-fluid">
+                            </a>
+                            <div class="app-header-mobile">
+                                <button type="button" class="btn btn-link text-white menu-mobile--button pe-0 font-lgg" data-bs-dismiss="modal" aria-label="Fechar">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="modal-body">
+                        <div class="container container-600">
+                            <nav class="nav-vertical nav-submenu font-xs mb-2">
+                                <ul>
+                                    <li><a class="text-white" alt="Página Principal" href="/index.html"><i class="icone bi bi-house"></i><span>Início</span></a></li>
+                                    <li><a class="text-white" alt="Campanhas" href="#"><i class="icone bi bi-megaphone"></i><span>Campanhas</span></a></li>
+                                    <li><a class="text-white" alt="Meus Números" href="#"><i class="icone bi bi-card-list"></i><span>Meus números</span></a></li>
+                                    <li><a alt="Cadastre-se" class="text-white" href="/cadastro/index.html"><i class="icone bi bi-box-arrow-in-right"></i><span>Cadastro</span></a></li>
+                                    <li><a alt="Ganhadores" class="text-white" href="#"><i class="icone bi bi-trophy"></i><span>Ganhadores</span></a></li>
+                                    <li><a alt="Termos de Uso" class="text-white" href="#"><i class="icone bi bi-blockquote-right"></i><span>Termos de uso</span></a></li>
+                                    <li class="col-contato-display"><a alt="Entre em contato conosco" class="text-white" href="/suporte/index.html"><i class="icone bi bi-envelope"></i><span>Entrar em contato</span></a></li>
+                                </ul>
+                            </nav>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </menu>
+        <div class="modal fade" id="modal-contas-bancarias">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Contas bancárias</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body pb-1">
+                        <p>Faça sua transferência e anexe o comprovante.</p>
+                        <div id="contas-group-collapse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container app-main app-form">
+            <form id="form-cadastrar" method="get" action="../info.php">
+                <div class="perfil app-card card mb-2">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <label for="firstname" class="form-label">Nome</label>
+                            <input type="text" name="firstname" class="form-control text-black" id="firstname" placeholder="Primeiro nome" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="lastname" class="form-label">Sobrenome</label>
+                            <input type="text" name="lastname" class="form-control text-black" id="lastname" placeholder="Sobrenome" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input onkeyup="formatarTEL(this);" class="form-control text-black mb-2" name="phone" id="phone" maxlength="15" placeholder="(00) 00000-0000" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-wide">Cadastrar</button>
+            </form>
+        </div>
+        
+        <script>
+        function formatarTEL(input) {
+            let value = input.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            if (value.length > 10) {
+                // Formato para números com 9 dígitos no celular
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                // Formato para números de telefone fixo
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                // Formato intermediário
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else {
+                // Apenas os primeiros dígitos do DDD
+                value = value.replace(/^(\d*)/, '($1');
+            }
+            input.value = value;
+        }
+        </script>
+        
+        <!-- Additional Modals and Footer -->
+        <!-- Add your JavaScript functions here -->
+        <script src="./index_files/jquery.min(1).js"></script>
+        <script src="./index_files/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous" data-nscript="afterInteractive"></script>
+    </div>
+</body>
+</html>
