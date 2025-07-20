@@ -38,6 +38,9 @@ class Main {
             case 'search_orders_by_phone':
                 $this->searchOrdersByPhone();
                 break;
+            case 'contact_send_email':
+                $this->sendContact();
+                break;
             default:
                 echo json_encode(['status' => 'error', 'msg' => 'Ação não encontrada']);
         }
@@ -138,6 +141,29 @@ class Main {
             }
         } else {
             echo json_encode(['status' => 'error', 'msg' => 'Usuário não encontrado']);
+        }
+    }
+
+    private function sendContact() {
+        $data = [
+            'name' => $_POST['nome'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'phone' => $_POST['telefone'] ?? '',
+            'campaign' => $_POST['campanha'] ?? '',
+            'subject' => $_POST['assunto'] ?? '',
+            'message' => $_POST['mensagem'] ?? ''
+        ];
+
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $query = "INSERT INTO contacts (name, email, phone, campaign, subject, message) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        
+        if ($stmt->execute(array_values($data))) {
+            echo json_encode(['status' => 'success']);
+        } else {
+            echo json_encode(['status' => 'error']);
         }
     }
 }

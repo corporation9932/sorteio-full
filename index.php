@@ -6,7 +6,20 @@ $campaigns = $campaign->getActiveCampaigns();
 $current_campaign = $campaigns[0] ?? null;
 
 if (!$current_campaign) {
-    die('Nenhuma campanha ativa encontrada');
+    // Criar campanha padrão se não existir
+    $default_campaign = [
+        'title' => 'EDIÇÃO 08 - CEGONHA MILIONÁRIA',
+        'description' => 'são 8 caminhonetas + cegonha para sua mudança de vida',
+        'image' => 'cegonha caminhonetas.jpg',
+        'price' => 5.00,
+        'total_numbers' => 1000000,
+        'min_purchase' => 1,
+        'max_purchase' => 500,
+        'draw_date' => '2024-12-31 19:00:00'
+    ];
+    $campaign->createCampaign($default_campaign);
+    $campaigns = $campaign->getActiveCampaigns();
+    $current_campaign = $campaigns[0];
 }
 
 $discounts = $campaign->getDiscounts($current_campaign['id']);
@@ -40,7 +53,11 @@ $ranking = $campaign->getRanking($current_campaign['id'], 3);
    <header class="header-app-header">
       <div class="header-app-header-container">
          <div class="container container-600 font-mdd">
-            <div style="text-align-last: justify; padding: 10 0 10 0;">
+                          <?php 
+                          $original_price = $current_campaign['price'] * $discount['quantity'];
+                          $final_price = $original_price - $discount['discount_amount'];
+                          echo number_format($final_price, 2, ',', '.');
+                          ?>
                 <button type="button" aria-label="Menu" class="btn btn-link text-white font-lgg ps-0" data-bs-toggle="modal" data-bs-target="#mobileMenu" style="margin-top:5px">
                     <i class="bi bi-filter-left"></i>
                 </button>
@@ -128,12 +145,12 @@ $ranking = $campaign->getRanking($current_campaign['id'], 3);
          <div class="item d-flex align-items-center font-xs me-2">
             <span class="ms-2 me-1">Campanha</span>
             <div class="tag btn btn-sm bg-white bg-opacity-50 font-xss box-shadow-08">
-               <?= date('d/m/y \à\s H\hi', strtotime($current_campaign['draw_date'])) ?>
+               28/08/24 às 19h00
             </div>
          </div>
          <div class="item d-flex align-items-center font-xs">
             <div class="me-1">por apenas</div>
-            <div class="tag btn btn-sm bg-cor-primaria text-cor-primaria-link box-shadow-08">R$ <?= number_format($current_campaign['price'], 2, ',', '.') ?></div>
+            <div class="tag btn btn-sm bg-cor-primaria text-cor-primaria-link box-shadow-08">R$ 5,00</div>
          </div>
       </div>
 
@@ -232,7 +249,7 @@ $ranking = $campaign->getRanking($current_campaign['id'], 3);
             <div class="row align-items-center" style="line-height:85%;">
                <div class="col pe-0 text-nowrap"><i class="bi bi-check2-circle me-1"></i><span>Quero participar</span></div>
                <div class="col pe-0 text-nowrap price-mobile">
-                  <span id="total">R$ <?= number_format($current_campaign['price'] * $current_campaign['min_purchase'], 2, ',', '.') ?></span>
+                  <span id="total">R$ 5,00</span>
                </div>
             </div>
          </button>
@@ -418,10 +435,10 @@ function formatCurrency(total) {
 }
 
 function calculatePrice(qty){   
-    let price = <?= $current_campaign['price'] ?>; 
+    let price = 5.00; 
     let total = price * qty;  
-    var max = <?= $current_campaign['max_purchase'] ?>;
-    var min = <?= $current_campaign['min_purchase'] ?>;
+    var max = 500;
+    var min = 1;
 
     if (qty < min) {
         $(".qty").val(min);
@@ -609,8 +626,6 @@ function formatarTEL(e) {
     e.value = v;
 }
 
-// Inicializar preço
-calculatePrice(<?= $current_campaign['min_purchase'] ?>);
 </script>
 
 <script src="./js/bootstrap.bundle.min.js"></script>

@@ -84,7 +84,7 @@ $orders = $user->getUserOrders($user_data['id']);
             </div>
             <?php if ($order['payment_status'] == 'paid'): ?>
             <div class="mt-2">
-               <button class="btn btn-sm btn-outline-primary" onclick="viewNumbers(<?= $order['id'] ?>)">
+               <button class="btn btn-sm btn-outline-primary" onclick="viewNumbers(<?= $order['id'] ?>)" data-bs-toggle="modal" data-bs-target="#numbersModal">
                   Ver Números
                </button>
             </div>
@@ -119,10 +119,51 @@ $orders = $user->getUserOrders($user_data['id']);
    </div>
 </div>
 
+<!-- Modal Ver Números -->
+<div class="modal fade" id="numbersModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Meus Números</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="numbersContent">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 function viewNumbers(orderId) {
-    // Implementar visualização dos números
-    alert('Funcionalidade em desenvolvimento');
+    // Buscar números via AJAX
+    $.ajax({
+        url: 'get-numbers.php',
+        method: 'POST',
+        data: {order_id: orderId},
+        success: function(response) {
+            const data = JSON.parse(response);
+            if (data.status === 'success') {
+                let html = '<div class="row">';
+                data.numbers.forEach(function(number, index) {
+                    html += `<div class="col-2 mb-2">
+                        <div class="badge bg-success p-2 w-100">${String(number).padStart(6, '0')}</div>
+                    </div>`;
+                });
+                html += '</div>';
+                document.getElementById('numbersContent').innerHTML = html;
+            } else {
+                document.getElementById('numbersContent').innerHTML = '<p class="text-center">Erro ao carregar números</p>';
+            }
+        },
+        error: function() {
+            document.getElementById('numbersContent').innerHTML = '<p class="text-center">Erro ao carregar números</p>';
+        }
+    });
 }
 </script>
 

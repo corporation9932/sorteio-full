@@ -14,13 +14,19 @@ Sistema completo de rifas online com integração PIX via NitroPagamentos.
 - ✅ Geração automática de números
 - ✅ Interface responsiva
 - ✅ Design idêntico ao site de referência
+- ✅ Valor mínimo R$ 5,00 e máximo 500 números
+- ✅ Todas as telas funcionais
+- ✅ Sistema de contatos
+- ✅ Página de ganhadores
+- ✅ Termos de uso
+- ✅ Relatórios completos
 
 ## Instalação
 
 1. **Configurar Banco de Dados**
    ```bash
    # Importar o schema do banco
-   mysql -u root -p < database/schema.sql
+   mysql -u root -p < database/rifas_system.sql
    ```
 
 2. **Configurar API NitroPagamentos**
@@ -43,6 +49,10 @@ Sistema completo de rifas online com integração PIX via NitroPagamentos.
 - `index.php` - Página principal (idêntica ao site de referência)
 - `compra/index.php` - Página de checkout com PIX
 - `meus-numeros.php` - Visualização dos números do usuário
+- `campanhas.php` - Lista todas as campanhas ativas
+- `ganhadores.php` - Lista dos ganhadores
+- `termos.php` - Termos de uso
+- `info.php` - Página de confirmação de cadastro
 
 ### Backend
 - `classes/` - Classes PHP (Campaign, User, Order, Main)
@@ -57,6 +67,7 @@ Sistema completo de rifas online com integração PIX via NitroPagamentos.
 - `discounts` - Descontos por quantidade
 - `ranking` - Ranking de participantes
 - `admins` - Administradores
+- `contacts` - Mensagens de contato
 
 ## Painel Administrativo
 
@@ -70,6 +81,7 @@ Acesse: `/admin/`
 - Visualizar pedidos
 - Gerenciar usuários
 - Relatórios
+- Gerenciar contatos
 
 ## API NitroPagamentos
 
@@ -89,6 +101,9 @@ O sistema utiliza a API da NitroPagamentos para:
 - Acompanhar status do pedido
 - Visualizar números adquiridos
 - Ranking de participantes
+- Consultar ganhadores
+- Entrar em contato
+- Visualizar termos de uso
 
 ### Para Administradores:
 - Criar/editar campanhas
@@ -97,6 +112,14 @@ O sistema utiliza a API da NitroPagamentos para:
 - Gerenciar usuários
 - Relatórios de faturamento
 - Controle de números vendidos
+- Gerenciar contatos dos usuários
+- Relatórios detalhados por período
+- **Valor mínimo por número:** R$ 5,00
+- **Máximo de números por pessoa:** 500 por rifa
+- **Pagamento:** Exclusivamente via PIX
+- **Tempo para pagamento:** 30 minutos
+- **Geração de números:** Automática após confirmação do pagamento
+- **Sorteios:** Realizados nas datas programadas
 
 ## Segurança
 

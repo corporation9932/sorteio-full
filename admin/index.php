@@ -105,6 +105,9 @@ $campaigns = $campaign->getActiveCampaigns();
                     <a href="?page=reports" class="list-group-item list-group-item-action">
                         <i class="bi bi-graph-up"></i> Relatórios
                     </a>
+                    <a href="?page=contacts" class="list-group-item list-group-item-action">
+                        <i class="bi bi-envelope"></i> Contatos
+                    </a>
                 </div>
             </div>
             <div class="col-md-9">
@@ -122,6 +125,9 @@ $campaigns = $campaign->getActiveCampaigns();
                         break;
                     case 'reports':
                         include 'pages/reports.php';
+                        break;
+                    case 'contacts':
+                        include 'pages/contacts.php';
                         break;
                     default:
                         include 'pages/dashboard.php';
